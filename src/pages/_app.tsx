@@ -1,12 +1,18 @@
 import './styles.scss'
 import { AppProps } from 'next/app'
+import Head from 'next/head'
 
 import { Layout } from '../components'
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <>
+      <Head>
+        <title>Book Store</title>
+      </Head>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </>
   )
 }
