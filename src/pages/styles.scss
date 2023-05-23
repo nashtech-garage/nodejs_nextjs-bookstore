@@ -7,10 +7,10 @@ body {
 .slider {
   width: 100%;
   margin: auto;
-}
 
-.slider img {
-  width: 100%;
+  img {
+    width: 100%;
+  }
 }
 
 /* END css slider */
@@ -21,58 +21,57 @@ body {
   background: #14855a;
   position: relative;
   color: #ddd;
+
+  > .item_nav {
+    float: left;
+  }
+
+  .logo {
+    margin: 0 0 0 20px;
+
+    * {
+      float: left;
+      height: 50px;
+      line-height: 50px;
+      margin: 0;
+    }
+  }
 }
 
-.navigation > .item_nav {
-  float: left;
-}
+.menu {
+  > div:first-child {
+    margin: 0 0 0 10px;
+  }
 
-.logo {
-  margin: 0 0 0 20px;
-}
+  > div.active {
+    background: #000;
+  }
 
-.logo * {
-  float: left;
-  height: 50px;
-  line-height: 50px;
-  margin: 0;
-}
-
-.menu > div:first-child {
-  margin: 0 0 0 10px;
-}
-
-.menu > div.active {
-  background: #000;
-}
-
-.menu > div.item_menu {
-  float: left;
-  padding: 16px 20px;
-  font-weight: bold;
+  > div.item_menu {
+    float: left;
+    padding: 16px 20px;
+    font-weight: bold;
+  }
 }
 
 .form_dang_nhap_gio_hang {
   position: absolute;
   right: 20px;
-}
+  height: 50px;
+  line-height: 50px;
 
-.form_dang_nhap_gio_hang div {
-  float: left;
+  div {
+    float: left;
+  }
 }
 
 .gio_hang {
   width: 50px;
   height: 50px;
-}
 
-.gio_hang img {
-  width: 100%;
-}
-
-.form_dang_nhap_gio_hang {
-  height: 50px;
-  line-height: 50px;
+  img {
+    width: 100%;
+  }
 }
 
 /* END css navigation */
@@ -110,23 +109,23 @@ body {
   float: left;
   margin: 1.5%;
   cursor: pointer;
-}
 
-.item_thong_tin_sach:hover {
-  box-shadow: 5px 5px 10px #aaa;
-}
+  :hover {
+    box-shadow: 5px 5px 10px #aaa;
+  }
 
-.item_thong_tin_sach div {
-  padding: 5px;
+  div {
+    padding: 5px;
+  }
 }
 
 .hinh_sach {
   height: 250px;
   overflow: hidden;
-}
 
-.hinh_sach img {
-  height: 100%;
+  img {
+    height: 100%;
+  }
 }
 
 .ten_sach {
@@ -163,27 +162,27 @@ body {
 
 .footer_left {
   float: left;
-}
 
-.footer_left > div {
-  margin: 10px;
+  > div {
+    margin: 10px;
+  }
 }
 
 .footer_right {
   float: right;
-}
 
-.footer_right > * {
-  float: left;
-  margin: 10px;
+  > * {
+    float: left;
+    margin: 10px;
+  }
 }
 
 .img_chung_nhan {
   height: 60px;
-}
 
-.img_chung_nhan img {
-  height: 100%;
+  img {
+    height: 100%;
+  }
 }
 
 /* END css footer */
@@ -198,10 +197,10 @@ body {
   border: 2px solid #14855a;
   transform: rotate(10deg);
   box-shadow: 10px 10px 10px #777;
-}
 
-.class_hinh_tin_tuc img {
-  height: 100%;
+  img {
+    height: 100%;
+  }
 }
 
 .thong_tin_tin_tuc {
@@ -218,19 +217,19 @@ body {
   float: left;
 }
 
-.title_tin_tuc a {
-  font-size: 16px;
-  font-weight: bold;
-  color: #14855a;
-  text-decoration: none;
-}
-
 .title_tin_tuc {
   margin: 0 0 10px 0;
-}
 
-.title_tin_tuc a:hover {
-  text-decoration: underline;
+  a {
+    font-size: 16px;
+    font-weight: bold;
+    color: #14855a;
+    text-decoration: none;
+
+    :hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 /* END css list tin tuc */
