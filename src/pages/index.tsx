@@ -1,4 +1,4 @@
-import { Module } from '../components'
+import { Module, Book } from '../components'
 
 export default function Home() {
   const data = [
@@ -61,10 +61,43 @@ export default function Home() {
   ]
 
   return (
-    <section className='container'>
-      <Module title='Sách bán chạy' data={data} />
-      <Module title='Sách nổi bật' data={data} />
-      <Module title='Sách mới' data={data} />
-    </section>
+    <>
+      <Module title='Sách bán chạy'>
+        {data.map((book, index) => (
+          <Book
+            key={index}
+            imageURL={book.imageURL}
+            name={book.name}
+            author={book.author}
+            price={book.price}
+            salePrice={book.salePrice}
+          />
+        ))}
+      </Module>
+      <Module title='Sách nổi bật'>
+        {data.map((book, index) => (
+          <Book
+            key={index}
+            imageURL={book.imageURL}
+            name={book.name}
+            author={book.author}
+            price={book.price}
+            salePrice={book.salePrice}
+          />
+        ))}
+      </Module>
+      <Module title='Sách mới'>
+        {data.map((book, index) => (
+          <Book
+            key={index}
+            imageURL={book.imageURL}
+            name={book.name}
+            author={book.author}
+            price={book.price}
+            salePrice={book.salePrice}
+          />
+        ))}
+      </Module>
+    </>
   )
 }

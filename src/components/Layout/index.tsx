@@ -9,7 +9,7 @@ export function Layout({ children }: LayoutPros) {
   return (
     <>
       <Header></Header>
-      <main>{children}</main>
+      <main className='container'>{children}</main>
       <Footer></Footer>
     </>
   )
