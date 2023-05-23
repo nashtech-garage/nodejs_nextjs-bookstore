@@ -1,4 +1,8 @@
+import { useRouter } from 'next/router'
+
 export default function Header() {
+  const router = useRouter()
+
   return (
     <header>
       <div className='slider'>
@@ -10,10 +14,33 @@ export default function Header() {
           <h3 className='slogan'>Bookstore</h3>
         </div>
         <div className='menu item_nav'>
-          <div className='item_menu active'>Trang chủ</div>
-          <div className='item_menu'>Danh mục sách</div>
-          <div className='item_menu'>Tin tức</div>
-          <div className='item_menu'>Liên hệ</div>
+          <div
+            className={`item_menu ${router.pathname === '/' ? 'active' : ''}`}
+            onClick={() => router.push('/', undefined, { scroll: false })}
+          >
+            Trang chủ
+          </div>
+
+          <div
+            className={`item_menu ${router.pathname === '/category' ? 'active' : ''}`}
+            onClick={() =>
+              router.push('/category', undefined, { scroll: false })
+            }
+          >
+            Danh mục sách
+          </div>
+          <div
+            className={`item_menu ${router.pathname === '/news' ? 'active' : ''}`}
+            onClick={() => router.push('/news', undefined, { scroll: false })}
+          >
+            Tin tức
+          </div>
+          <div
+            className={`item_menu ${router.pathname === '/about' ? 'active' : ''}`}
+            onClick={() => router.push('/about', undefined, { scroll: false })}
+          >
+            Liên hệ
+          </div>
         </div>
         <div className='form_dang_nhap_gio_hang item_nav'>
           <div className='gio_hang'>

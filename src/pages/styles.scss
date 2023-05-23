@@ -39,18 +39,22 @@ body {
 }
 
 .menu {
-  > div:first-child {
-    margin: 0 0 0 10px;
-  }
 
-  > div.active {
-    background: #000;
-  }
+  > div {
+    &:first-child {
+      margin: 0 0 0 10px;
+    }
 
-  > div.item_menu {
-    float: left;
-    padding: 16px 20px;
-    font-weight: bold;
+    &.active, &.hover {
+      background: #000;
+    }
+
+    &.item_menu {
+      float: left;
+      padding: 16px 20px;
+      font-weight: bold;
+      cursor: pointer;
+    }
   }
 }
 
