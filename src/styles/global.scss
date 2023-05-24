@@ -1,3 +1,5 @@
+$green: #14855a;
+
 body {
   font-family: Arial;
 }
@@ -18,7 +20,7 @@ body {
 /* css navigation */
 
 .navigation {
-  background: #14855a;
+  background: $green;
   position: relative;
   color: #ddd;
 
@@ -39,13 +41,13 @@ body {
 }
 
 .menu {
-
   > div {
     &:first-child {
       margin: 0 0 0 10px;
     }
 
-    &.active, &.hover {
+    &.active,
+    &.hover {
       background: #000;
     }
 
@@ -100,11 +102,11 @@ body {
 
 .tieu_de_module {
   font-size: 30px;
-  color: #14855a;
+  color: $green;
   font-weight: bold;
   margin: 15px 0 15px 0;
   padding: 0 0 5px 0;
-  border-bottom: 2px solid #14855a;
+  border-bottom: 2px solid $green;
 }
 
 .item_thong_tin_sach {
@@ -198,7 +200,7 @@ body {
   height: 210px;
   overflow: hidden;
   float: left;
-  border: 2px solid #14855a;
+  border: 2px solid $green;
   transform: rotate(10deg);
   box-shadow: 10px 10px 10px #777;
 
@@ -227,7 +229,7 @@ body {
   a {
     font-size: 16px;
     font-weight: bold;
-    color: #14855a;
+    color: $green;
     text-decoration: none;
 
     :hover {
