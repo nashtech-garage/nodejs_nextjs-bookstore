@@ -8,11 +8,11 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.slider}>
-        <img src='images/slide_banner/slide_1.jpg' />
+        <img src='/images/slide_banner/slide_1.jpg' />
       </div>
       <nav className={styles.navigation}>
         <div className={`${styles.logo} ${styles.item_nav}`}>
-          <img src='images/logo.png' />
+          <img src='/images/logo.png' />
           <h3 className={styles.slogan}>Bookstore</h3>
         </div>
         <div className={`${styles.menu} ${styles.item_nav}`}>
@@ -27,10 +27,10 @@ export default function Header() {
 
           <div
             className={`${styles.item_menu} ${
-              router.pathname === '/category' ? `${styles.active}` : ''
+              router.pathname === '/category/1' ? `${styles.active}` : ''
             }`}
             onClick={() =>
-              router.push('/category', undefined, { scroll: false })
+              router.push('/category/1', undefined, { scroll: false })
             }
           >
             Danh mục sách
@@ -46,7 +46,7 @@ export default function Header() {
         </div>
         <div className={`${styles.form_dang_nhap_gio_hang} ${styles.item_nav}`}>
           <div className={styles.gio_hang}>
-            <img src='images/cart.png' />
+            <img src='/images/cart.png' />
           </div>
           <div>
             <span /> Đăng nhập

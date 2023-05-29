@@ -10,6 +10,7 @@ export function Layout({ children }: LayoutPros) {
     <>
       <Header></Header>
       <main className='container'>{children}</main>
+      <hr></hr>
       <Footer></Footer>
     </>
   )

@@ -10,7 +10,7 @@ export default function Footer() {
       </div>
       <div className={styles.footer_right}>
         <div className={styles.img_chung_nhan}>
-          <img src='images/seal-ecommerce.png' alt='' />
+          <img src='/images/seal-ecommerce.png' alt='' />
         </div>
       </div>
     </footer>
