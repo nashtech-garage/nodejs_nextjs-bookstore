@@ -27,10 +27,10 @@ export default function Header() {
 
           <div
             className={`${styles.item_menu} ${
-              router.pathname === '/category/1' ? `${styles.active}` : ''
+              router.pathname === '/categories/[id]' ? `${styles.active}` : ''
             }`}
             onClick={() =>
-              router.push('/category/1', undefined, { scroll: false })
+              router.push('/categories/1', undefined, { scroll: false })
             }
           >
             Danh mục sách

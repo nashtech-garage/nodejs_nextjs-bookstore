@@ -1,15 +1,18 @@
 import { Menu as MenuAntd } from 'antd'
-import type { MenuProps } from 'antd/es/menu'
+import type { MenuProps as MenuAntdProps } from 'antd/es/menu'
 
 import styles from './styles.module.scss'
+import { useRouter } from 'next/router'
 
-type MenuItem = Required<MenuProps>['items'][number]
+type MenuItem = Required<MenuAntdProps>['items'][number]
 
-export type MenuPros = {
+export type MenuProps = {
   children?: React.ReactNode
 }
 
-export function Menu({ children }: MenuPros) {
+export function Menu({ children }: MenuProps) {
+  const router = useRouter()
+
   function getItem(label: React.ReactNode, key?: React.Key | null): MenuItem {
     return {
       key,
@@ -26,6 +29,10 @@ export function Menu({ children }: MenuPros) {
     getItem('Thiếu Nhi', '6'),
   ]
 
+  const onClickItem = (info: any) => {
+    router.push(`/categories/${info.key}`, undefined, { scroll: false })
+  }
+
   return (
     <div className={styles.menu}>
       <MenuAntd
@@ -33,6 +40,7 @@ export function Menu({ children }: MenuPros) {
         defaultSelectedKeys={['1']}
         defaultOpenKeys={['sub1']}
         items={items}
+        onClick={onClickItem}
       />
       <div className={styles.content}>{children}</div>
     </div>
