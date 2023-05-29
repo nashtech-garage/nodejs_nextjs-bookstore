@@ -1,3 +1,5 @@
+import styles from './styles.module.scss'
+
 export type NewProps = {
   imageURL: string
   title: string
@@ -6,12 +8,12 @@ export type NewProps = {
 
 export function New({ imageURL, title, description }: NewProps) {
   return (
-    <div className='tin_tuc_item'>
-      <div className='class_hinh_tin_tuc'>
+    <div className={styles.tin_tuc_item}>
+      <div className={styles.class_hinh_tin_tuc}>
         <img src={imageURL} alt='' />
       </div>
-      <div className='thong_tin_tin_tuc'>
-        <div className='title_tin_tuc'>
+      <div className={styles.thong_tin_tin_tuc}>
+        <div className={styles.title_tin_tuc}>
           <a href='#'>{title}</a>
         </div>
         <div>{description}</div>

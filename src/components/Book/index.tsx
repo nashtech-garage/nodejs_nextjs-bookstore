@@ -1,3 +1,5 @@
+import styles from './styles.module.scss'
+
 export type BookProps = {
   imageURL: string
   name: string
@@ -8,15 +10,15 @@ export type BookProps = {
 
 export function Book({ imageURL, name, author, salePrice, price }: BookProps) {
   return (
-    <div className='item_thong_tin_sach'>
-      <div className='hinh_sach'>
+    <div className={styles.item_thong_tin_sach}>
+      <div className={styles.hinh_sach}>
         <img src={imageURL} />
       </div>
-      <div className='ten_sach'>{name}</div>
-      <div className='tac_gia'>{author}</div>
-      <div className='don_gia'>{salePrice} ₫</div>
-      <div className='gia_bia'>{price} ₫</div>
-      <div className='btn_mua_ngay'>Mua ngay</div>
+      <div className={styles.ten_sach}>{name}</div>
+      <div className={styles.tac_gia}>{author}</div>
+      <div className={styles.don_gia}>{salePrice} ₫</div>
+      <div className={styles.gia_bia}>{price} ₫</div>
+      <div className={styles.btn_mua_ngay}>Mua ngay</div>
     </div>
   )
 }

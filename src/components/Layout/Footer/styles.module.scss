@@ -1,0 +1,21 @@
+.footer {
+  .footer_left {
+    float: left;
+
+    > div {
+      margin: 10px;
+    }
+  }
+
+  .footer_right {
+    float: right;
+  }
+
+  .img_chung_nhan {
+    height: 60px;
+
+    img {
+      height: 100%;
+    }
+  }
+}

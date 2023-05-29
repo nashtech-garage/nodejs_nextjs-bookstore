@@ -1,3 +1,5 @@
+import styles from './styles.module.scss'
+
 export type ModuleProps = {
   title?: string
   children: React.ReactNode
@@ -5,9 +7,9 @@ export type ModuleProps = {
 
 export function Module({ title, children }: ModuleProps) {
   return (
-    <div className='module'>
-      {title && <div className='tieu_de_module'>{title}</div>}
-      <div className='noi_dung_module'>
+    <div className={styles.module}>
+      {title && <div className={styles.tieu_de_module}>{title}</div>}
+      <div className={styles.noi_dung_module}>
         {children}
         <div style={{ clear: 'both' }} />
       </div>
