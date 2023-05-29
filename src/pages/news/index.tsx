@@ -41,7 +41,7 @@ export default function News() {
   ]
 
   return (
-    <Module title='Sách bán chạy'>
+    <Module>
       {data.map((value, index) => (
         <New
           key={index}

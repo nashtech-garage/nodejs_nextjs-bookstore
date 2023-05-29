@@ -86,18 +86,6 @@ export default function Home() {
           />
         ))}
       </Module>
-      <Module title='Sách mới'>
-        {data.map((book, index) => (
-          <Book
-            key={index}
-            imageURL={book.imageURL}
-            name={book.name}
-            author={book.author}
-            price={book.price}
-            salePrice={book.salePrice}
-          />
-        ))}
-      </Module>
     </>
   )
 }
