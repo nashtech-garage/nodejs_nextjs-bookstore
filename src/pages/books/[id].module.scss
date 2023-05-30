@@ -1,0 +1,29 @@
+.book_details {
+  margin-top: 10px;
+  display: flex;
+
+  .left_content {
+    text-align: center;
+    width: 30vw;
+
+    .sale_price {
+      font-size: 2em;
+      font-weight: bold;
+    }
+
+    .price {
+      font-size: 1em;
+      color: #666666;
+      text-decoration: line-through;
+    }
+
+    .button {
+      color: #fff;
+      background: #f80;
+    }
+  }
+
+  .right_content {
+    width: 70vw;
+  }
+}

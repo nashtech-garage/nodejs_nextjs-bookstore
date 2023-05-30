@@ -43,6 +43,14 @@ export default function Header() {
           >
             Tin tức
           </div>
+          <div
+            className={`${styles.item_menu} ${
+              router.pathname === '/about' ? `${styles.active}` : ''
+            }`}
+            onClick={() => router.push('/about', undefined, { scroll: false })}
+          >
+            Liên Hệ
+          </div>
         </div>
         <div className={`${styles.form_dang_nhap_gio_hang} ${styles.item_nav}`}>
           <div className={styles.gio_hang}>

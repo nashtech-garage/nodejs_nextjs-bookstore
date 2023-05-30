@@ -1,90 +1,47 @@
+import { useEffect, useState } from 'react'
 import { Module, Book } from '../components'
 
+import { mockHotBooksData, mockFeatureBooksData } from '../mocks'
+
 export default function Home() {
-  const data = [
-    {
-      imageURL: '/images/sach/con_cho_nho_bia_thuong_bia_1.jpg',
-      name: 'Con Chó Nhỏ Mang Giỏ Hoa Hồng (Phiên Bản Đặc Biệt - Bìa Cứng)',
-      author: 'Nguyễn Nhật Ánh',
-      salePrice: 139000,
-      price: 159000,
-    },
-    {
-      imageURL: '/images/sach/con_cho_nho_bia_thuong_bia_1.jpg',
-      name: 'Con Chó Nhỏ Mang Giỏ Hoa Hồng (Phiên Bản Đặc Biệt - Bìa Cứng)',
-      author: 'Nguyễn Nhật Ánh',
-      salePrice: 139000,
-      price: 159000,
-    },
-    {
-      imageURL: '/images/sach/con_cho_nho_bia_thuong_bia_1.jpg',
-      name: 'Con Chó Nhỏ Mang Giỏ Hoa Hồng (Phiên Bản Đặc Biệt - Bìa Cứng)',
-      author: 'Nguyễn Nhật Ánh',
-      salePrice: 139000,
-      price: 159000,
-    },
-    {
-      imageURL: '/images/sach/con_cho_nho_bia_thuong_bia_1.jpg',
-      name: 'Con Chó Nhỏ Mang Giỏ Hoa Hồng (Phiên Bản Đặc Biệt - Bìa Cứng)',
-      author: 'Nguyễn Nhật Ánh',
-      salePrice: 139000,
-      price: 159000,
-    },
-    {
-      imageURL: '/images/sach/con_cho_nho_bia_thuong_bia_1.jpg',
-      name: 'Con Chó Nhỏ Mang Giỏ Hoa Hồng (Phiên Bản Đặc Biệt - Bìa Cứng)',
-      author: 'Nguyễn Nhật Ánh',
-      salePrice: 139000,
-      price: 159000,
-    },
-    {
-      imageURL: '/images/sach/con_cho_nho_bia_thuong_bia_1.jpg',
-      name: 'Con Chó Nhỏ Mang Giỏ Hoa Hồng (Phiên Bản Đặc Biệt - Bìa Cứng)',
-      author: 'Nguyễn Nhật Ánh',
-      salePrice: 139000,
-      price: 159000,
-    },
-    {
-      imageURL: '/images/sach/con_cho_nho_bia_thuong_bia_1.jpg',
-      name: 'Con Chó Nhỏ Mang Giỏ Hoa Hồng (Phiên Bản Đặc Biệt - Bìa Cứng)',
-      author: 'Nguyễn Nhật Ánh',
-      salePrice: 139000,
-      price: 159000,
-    },
-    {
-      imageURL: '/images/sach/con_cho_nho_bia_thuong_bia_1.jpg',
-      name: 'Con Chó Nhỏ Mang Giỏ Hoa Hồng (Phiên Bản Đặc Biệt - Bìa Cứng)',
-      author: 'Nguyễn Nhật Ánh',
-      salePrice: 139000,
-      price: 159000,
-    },
-  ]
+  const [hotBooks, setHotBooks] = useState<any[]>([])
+  const [featureBooks, setFeatureBooks] = useState<any[]>([])
+
+  useEffect(() => {
+    setHotBooks(mockHotBooksData)
+  }, [])
+
+  useEffect(() => {
+    setFeatureBooks(mockFeatureBooksData)
+  }, [])
 
   return (
     <>
       <Module title='Sách bán chạy'>
-        {data.map((book, index) => (
-          <Book
-            key={index}
-            imageURL={book.imageURL}
-            name={book.name}
-            author={book.author}
-            price={book.price}
-            salePrice={book.salePrice}
-          />
-        ))}
+        {hotBooks.length !== 0 &&
+          hotBooks.map((book: any, index) => (
+            <Book
+              key={index}
+              imageURL={book.imageURL}
+              name={book.name}
+              author={book.author}
+              price={book.price}
+              salePrice={book.salePrice}
+            />
+          ))}
       </Module>
       <Module title='Sách nổi bật'>
-        {data.map((book, index) => (
-          <Book
-            key={index}
-            imageURL={book.imageURL}
-            name={book.name}
-            author={book.author}
-            price={book.price}
-            salePrice={book.salePrice}
-          />
-        ))}
+        {featureBooks.length !== 0 &&
+          featureBooks.map((book: any, index) => (
+            <Book
+              key={index}
+              imageURL={book.imageURL}
+              name={book.name}
+              author={book.author}
+              price={book.price}
+              salePrice={book.salePrice}
+            />
+          ))}
       </Module>
     </>
   )

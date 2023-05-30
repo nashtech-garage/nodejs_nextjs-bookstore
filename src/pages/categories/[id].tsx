@@ -1,71 +1,18 @@
-import { Book, Menu, Module } from '@/components'
+import { Book, BookProps, Menu, Module } from '@/components'
 import { Pagination } from 'antd'
 
-export default function Category() {
-  const data = [
-    {
-      imageURL: '/images/sach/con_cho_nho_bia_thuong_bia_1.jpg',
-      name: 'Con Chó Nhỏ Mang Giỏ Hoa Hồng (Phiên Bản Đặc Biệt - Bìa Cứng)',
-      author: 'Nguyễn Nhật Ánh',
-      salePrice: 139000,
-      price: 159000,
-    },
-    {
-      imageURL: '/images/sach/con_cho_nho_bia_thuong_bia_1.jpg',
-      name: 'Con Chó Nhỏ Mang Giỏ Hoa Hồng (Phiên Bản Đặc Biệt - Bìa Cứng)',
-      author: 'Nguyễn Nhật Ánh',
-      salePrice: 139000,
-      price: 159000,
-    },
-    {
-      imageURL: '/images/sach/con_cho_nho_bia_thuong_bia_1.jpg',
-      name: 'Con Chó Nhỏ Mang Giỏ Hoa Hồng (Phiên Bản Đặc Biệt - Bìa Cứng)',
-      author: 'Nguyễn Nhật Ánh',
-      salePrice: 139000,
-      price: 159000,
-    },
-    {
-      imageURL: '/images/sach/con_cho_nho_bia_thuong_bia_1.jpg',
-      name: 'Con Chó Nhỏ Mang Giỏ Hoa Hồng (Phiên Bản Đặc Biệt - Bìa Cứng)',
-      author: 'Nguyễn Nhật Ánh',
-      salePrice: 139000,
-      price: 159000,
-    },
-    {
-      imageURL: '/images/sach/con_cho_nho_bia_thuong_bia_1.jpg',
-      name: 'Con Chó Nhỏ Mang Giỏ Hoa Hồng (Phiên Bản Đặc Biệt - Bìa Cứng)',
-      author: 'Nguyễn Nhật Ánh',
-      salePrice: 139000,
-      price: 159000,
-    },
-    {
-      imageURL: '/images/sach/con_cho_nho_bia_thuong_bia_1.jpg',
-      name: 'Con Chó Nhỏ Mang Giỏ Hoa Hồng (Phiên Bản Đặc Biệt - Bìa Cứng)',
-      author: 'Nguyễn Nhật Ánh',
-      salePrice: 139000,
-      price: 159000,
-    },
-    {
-      imageURL: '/images/sach/con_cho_nho_bia_thuong_bia_1.jpg',
-      name: 'Con Chó Nhỏ Mang Giỏ Hoa Hồng (Phiên Bản Đặc Biệt - Bìa Cứng)',
-      author: 'Nguyễn Nhật Ánh',
-      salePrice: 139000,
-      price: 159000,
-    },
-    {
-      imageURL: '/images/sach/con_cho_nho_bia_thuong_bia_1.jpg',
-      name: 'Con Chó Nhỏ Mang Giỏ Hoa Hồng (Phiên Bản Đặc Biệt - Bìa Cứng)',
-      author: 'Nguyễn Nhật Ánh',
-      salePrice: 139000,
-      price: 159000,
-    },
-  ]
+import { mockCategoriesData, mockBooksData } from '../../mocks'
 
+export type CategoryProps = {
+  books: BookProps[]
+}
+
+export default function Category({ books }: CategoryProps) {
   return (
     <>
       <Menu>
         <Module>
-          {data.map((book, index) => (
+          {books.map((book, index) => (
             <Book
               key={index}
               imageURL={book.imageURL}
@@ -85,4 +32,21 @@ export default function Category() {
       />
     </>
   )
+}
+
+export async function getStaticPaths() {
+  const paths = mockCategoriesData.map((value) => ({
+    params: { id: value.id },
+  }))
+  return { paths, fallback: false }
+}
+
+export async function getStaticProps({ params }: any) {
+  const books = mockBooksData[Number(params.id) - 1]
+
+  return {
+    props: {
+      books,
+    },
+  }
 }

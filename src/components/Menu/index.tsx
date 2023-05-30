@@ -24,9 +24,6 @@ export function Menu({ children }: MenuProps) {
     getItem('Văn Học', '1'),
     getItem('Kinh Tế', '2'),
     getItem('Ngoại Ngữ', '3'),
-    getItem('Thời trang', '4'),
-    getItem('Tâm Lý', '5'),
-    getItem('Thiếu Nhi', '6'),
   ]
 
   const onClickItem = (info: any) => {
