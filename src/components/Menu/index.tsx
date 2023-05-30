@@ -1,7 +1,7 @@
 import { Menu as MenuAntd } from 'antd'
 import type { MenuProps as MenuAntdProps } from 'antd/es/menu'
 
-import styles from './styles.module.scss'
+import styles from './index.module.scss'
 import { useRouter } from 'next/router'
 
 type MenuItem = Required<MenuAntdProps>['items'][number]

@@ -1,4 +1,4 @@
-import styles from './styles.module.scss'
+import styles from './index.module.scss'
 
 export type ModuleProps = {
   title?: string
