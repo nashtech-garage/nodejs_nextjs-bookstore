@@ -87,7 +87,7 @@ export default function Registry() {
             Đăng ký
           </Button>
           <Button
-            onClick={() => router.push('/login', undefined, { shallow: false })}
+            onClick={() => router.push('/login', undefined, { scroll: false })}
           >
             Quay lại
           </Button>

@@ -34,7 +34,7 @@ export default function Login() {
           </Button>
           <Button
             onClick={() =>
-              router.push('/registry', undefined, { shallow: false })
+              router.push('/registry', undefined, { scroll: false })
             }
           >
             Đăng ký
