@@ -56,8 +56,11 @@ export default function Header() {
           <div className={styles.gio_hang}>
             <img src='/images/cart.png' />
           </div>
-          <div>
-            <span /> Đăng nhập
+          <div
+            className={styles.item_menu}
+            onClick={() => router.push('/login', undefined, { scroll: false })}
+          >
+            Đăng Nhập
           </div>
         </div>
         <div style={{ clear: 'both' }} />
