@@ -1,6 +1,8 @@
 import Image from 'next/image'
 import styles from './index.module.scss'
 
+About.title = 'About'
+
 export default function About() {
   return (
     <div className={styles.about}>

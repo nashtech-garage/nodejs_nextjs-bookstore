@@ -3,6 +3,8 @@ import { Module, Book } from '../components'
 
 import { mockHotBooksData, mockFeatureBooksData } from '../mocks'
 
+Home.title = 'Home'
+
 export default function Home() {
   const [hotBooks, setHotBooks] = useState<any[]>([])
   const [featureBooks, setFeatureBooks] = useState<any[]>([])

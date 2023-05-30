@@ -5,6 +5,8 @@ export type NewsProps = {
   news: NewProps[]
 }
 
+News.title = 'News'
+
 export default function News({ news }: NewsProps) {
   return (
     <Module>
@@ -20,7 +22,7 @@ export default function News({ news }: NewsProps) {
   )
 }
 
-export async function getStaticProps({ params }: any) {
+export async function getStaticProps() {
   const news = mockNewsData
 
   return {

@@ -7,6 +7,8 @@ export type CategoryProps = {
   books: BookProps[]
 }
 
+Category.title = 'Category'
+
 export default function Category({ books }: CategoryProps) {
   return (
     <>

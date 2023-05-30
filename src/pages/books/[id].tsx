@@ -3,6 +3,8 @@ import Image from 'next/image'
 
 import styles from './[id].module.scss'
 
+BookDetail.title = 'Book Detail'
+
 export default function BookDetail() {
   return (
     <div className={styles.book_details}>
