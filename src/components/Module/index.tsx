@@ -1,15 +1,15 @@
-import { Book, BookProps } from '../Book'
+import styles from './index.module.scss'
 
 export type ModuleProps = {
-  title: string
+  title?: string
   children: React.ReactNode
 }
 
 export function Module({ title, children }: ModuleProps) {
   return (
-    <div className='module'>
-      <div className='tieu_de_module'>{title}</div>
-      <div className='noi_dung_module'>
+    <div className={styles.module}>
+      {title && <div className={styles.tieu_de_module}>{title}</div>}
+      <div className={styles.noi_dung_module}>
         {children}
         <div style={{ clear: 'both' }} />
       </div>

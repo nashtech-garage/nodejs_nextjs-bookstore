@@ -1,0 +1,12 @@
+@import '../../styles/variables.module.scss';
+
+.module {
+  .tieu_de_module {
+    font-size: 30px;
+    color: $primary-color;
+    font-weight: bold;
+    margin: 15px 0 15px 0;
+    padding: 0 0 5px 0;
+    border-bottom: 2px solid $primary-color;
+  }
+}

@@ -1,0 +1,44 @@
+@import '../../styles/variables.module.scss';
+
+.class_hinh_tin_tuc {
+  width: 34%;
+  height: 210px;
+  overflow: hidden;
+  float: left;
+  border: 2px solid $primary-color;
+  transform: rotate(10deg);
+  box-shadow: 10px 10px 10px $box-shadow-color;
+
+  img {
+    height: 100%;
+  }
+}
+
+.thong_tin_tin_tuc {
+  height: 210px;
+  width: 60%;
+  margin: 0 0 0 40%;
+  font-size: 12px;
+  transform: rotate(-5deg);
+}
+
+.tin_tuc_item {
+  width: 46%;
+  margin: 1.5%;
+  float: left;
+}
+
+.title_tin_tuc {
+  margin: 0 0 10px 0;
+
+  a {
+    font-size: 16px;
+    font-weight: bold;
+    color: $primary-color;
+    text-decoration: none;
+
+    :hover {
+      text-decoration: underline;
+    }
+  }
+}

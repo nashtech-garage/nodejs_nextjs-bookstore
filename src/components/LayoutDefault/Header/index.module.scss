@@ -1,0 +1,78 @@
+@import '../../../styles/variables.module.scss';
+
+.header {
+  .slider {
+    width: 100%;
+    margin: auto;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .navigation {
+    background: $primary-color;
+    position: relative;
+    color: $white-color;
+
+    > .item_nav {
+      float: left;
+    }
+
+    .logo {
+      margin: 0 0 0 20px;
+
+      * {
+        float: left;
+        height: 50px;
+        line-height: 50px;
+        margin: 0;
+      }
+    }
+  }
+
+  .menu {
+    > div {
+      &:first-child {
+        margin: 0 0 0 10px;
+      }
+
+      &.active,
+      &.hover {
+        background: $dark-color;
+      }
+
+      &.item_menu {
+        float: left;
+        padding: 16px 20px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .form_dang_nhap_gio_hang {
+    position: absolute;
+    right: 20px;
+    height: 50px;
+    line-height: 50px;
+
+    div {
+      float: left;
+    }
+
+    .item_menu {
+      font-weight: bold;
+      cursor: pointer;
+    }
+  }
+
+  .gio_hang {
+    width: 50px;
+    height: 50px;
+
+    img {
+      width: 100%;
+    }
+  }
+}

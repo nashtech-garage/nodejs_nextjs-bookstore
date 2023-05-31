@@ -1,0 +1,54 @@
+@import '../../styles/variables.module.scss';
+
+.item_thong_tin_sach {
+  width: 22%;
+  position: relative;
+  float: left;
+  margin: 1.5%;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 5px 5px 10px $box-shadow-color;
+  }
+
+  div {
+    padding: 5px;
+  }
+
+  .hinh_sach {
+    height: 250px;
+    overflow: hidden;
+
+    img {
+      height: 100%;
+    }
+  }
+
+  .ten_sach {
+    font-weight: bold;
+  }
+
+  .tac_gia {
+    font-size: 11px;
+    color: $muted-color;
+  }
+
+  .don_gia {
+    font-weight: bold;
+  }
+
+  .gia_bia {
+    font-size: 11px;
+    color: $muted-color;
+    text-decoration: line-through;
+  }
+
+  .btn_mua_ngay {
+    padding: 5px 20px;
+    color: #fff;
+    background: #f80;
+    position: absolute;
+    right: 10px;
+    bottom: 5px;
+  }
+}
