@@ -11,7 +11,7 @@ export default function Registry() {
   const onFinish = () => {}
 
   return (
-    <Card className={styles.registry}>
+    <Card className={styles.register}>
       <Form onFinish={onFinish} autoComplete='off' layout='vertical'>
         <Form.Item
           label='Tài Khoản'
