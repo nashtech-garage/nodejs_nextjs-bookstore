@@ -1,0 +1,18 @@
+NODE_ENV: 'development'
+
+SERVER:
+  PORT: 3000
+  JWT:
+    SECRET: 'secret'
+    EXPIRES_IN: 86400
+
+DATABASE:
+  POSTGRES:
+    HOST: 'localhost'
+    PORT: 5432
+    DATABASE: 'postgres'
+    SCHEMA: 'bookstore'
+    USERNAME: 'postgres'
+    PASSWORD: '123456'
+    SSL: false
+    SYNCHRONIZE: true
