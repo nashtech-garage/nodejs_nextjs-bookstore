@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common'
-import { Repository } from 'typeorm'
+import { Like, Repository } from 'typeorm'
 import { InjectRepository } from '@nestjs/typeorm'
 import * as bcrypt from 'bcrypt'
 
@@ -13,19 +13,33 @@ export class AccountsService {
     private accountRepository: Repository<Account>,
   ) {}
 
-  findByUsername(username: string): Promise<Account> {
-    return this.accountRepository.findOne({ where: { username } })
+  find(search?: string, limit?: number, page?: number) {
+    const offset = limit * page - limit || 0
+    return this.accountRepository.find({ take: limit, skip: offset, where: { email: Like(`%${search}%`) } })
   }
 
-  async save(username: string, password: string, fullName: string, phone: string, address: string, role?: Role): Promise<Account> {
+  findByEmail(email: string): Promise<Account> {
+    return this.accountRepository.findOne({ where: { email } })
+  }
+
+  async save(
+    email: string,
+    password: string,
+    fullName: string,
+    phone: string,
+    address: string,
+    role?: Role,
+    active?: boolean,
+  ): Promise<Account> {
     return this.accountRepository.save(
       new Account({
-        username,
+        email,
         password: bcrypt.hashSync(password, bcrypt.genSaltSync()),
         fullName,
         phone,
         address,
         role,
+        active,
       }),
     )
   }

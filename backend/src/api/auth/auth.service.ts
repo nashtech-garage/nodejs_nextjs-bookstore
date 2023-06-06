@@ -4,6 +4,7 @@ import { JwtService } from '@nestjs/jwt'
 
 import { AccountsService } from '../accounts/accounts.service'
 import { ConfigService } from '@nestjs/config'
+import { Account } from '../accounts/entities/account.entity'
 
 @Injectable()
 export class AuthService {
@@ -13,8 +14,8 @@ export class AuthService {
     private configService: ConfigService,
   ) {}
 
-  async login(username: string, password: string): Promise<any> {
-    const account = await this.accountsService.findByUsername(username)
+  async login(email: string, password: string): Promise<any> {
+    const account = await this.accountsService.findByEmail(email)
 
     // Validate Username exists and Password is correct
     if (!account || !bcrypt.compareSync(password, account.password)) {
@@ -22,19 +23,18 @@ export class AuthService {
     }
 
     return {
-      accessToken: await this.jwtService.signAsync({ username: account.username }),
+      accessToken: await this.jwtService.signAsync({ email: account.email }),
       expireAt: Date.now() + this.configService.get('SERVER.JWT.EXPIRES_IN') * 1000,
     }
   }
 
-  async register(
-    username: string,
+  register(
+    email: string,
     password: string,
     fullName: string,
     phone: string,
     address: string,
-  ): Promise<boolean> {
-    await this.accountsService.save(username, password, fullName, phone, address)
-    return true
+  ): Promise<Account> {
+    return this.accountsService.save(email, password, fullName, phone, address)
   }
 }

@@ -7,6 +7,6 @@ import { CategoriesModule } from './categories/categories.module'
 import { BooksModule } from './books/books.module'
 
 @Module({
-  imports: [MetaModule, AccountsModule, AuthModule, CategoriesModule, BooksModule],
+  imports: [MetaModule, AuthModule, AccountsModule, CategoriesModule, BooksModule],
 })
 export class ApiModule {}

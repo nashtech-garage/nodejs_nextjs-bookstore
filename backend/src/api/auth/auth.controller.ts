@@ -15,11 +15,11 @@ export class AuthController {
   @Post('/login')
   async login(@Body() loginDto: LoginDto): Promise<any> {
     try {
-      const { username, password } = loginDto
+      const { email, password } = loginDto
 
       return {
         message: 'Login Successfully',
-        data: await this.authService.login(username, password),
+        data: await this.authService.login(email, password),
       }
     } catch (error) {
       throw error
@@ -29,9 +29,9 @@ export class AuthController {
   @Post('/register')
   async registry(@Body() registerDto: RegisterDto): Promise<any> {
     try {
-      const { username, password, fullName, phone, address } = registerDto
+      const { email, password, fullName, phone, address } = registerDto
 
-      await this.authService.register(username, password, fullName, phone, address)
+      await this.authService.register(email, password, fullName, phone, address)
 
       return {
         message: 'Register Successfully',
@@ -45,11 +45,11 @@ export class AuthController {
   @Post('/profile')
   async profile(@Request() req): Promise<any> {
     try {
-      const { username } = req.user
+      const { email } = req.user
 
       return {
         message: 'Get Info Successfully',
-        data: await this.accountsService.findByUsername(username),
+        data: await this.accountsService.findByEmail(email),
       }
     } catch (error) {
       throw error

@@ -4,6 +4,7 @@ import { ApiQuery, ApiTags } from '@nestjs/swagger'
 import { CategoriesService } from './categories.service'
 import { CreateCategoryDto } from './dto/createCategory.dto'
 import { BooksService } from '../books/books.service'
+import { Auth, Role } from 'src/common'
 
 @ApiTags('categories')
 @Controller('/api/categories')
@@ -22,6 +23,7 @@ export class CategoriesController {
     }
   }
 
+  @Auth([Role.Admin, Role.Employer])
   @Post()
   async create(@Body() createCategoryDto: CreateCategoryDto): Promise<any> {
     try {
@@ -42,7 +44,7 @@ export class CategoriesController {
   @ApiQuery({ name: 'page', required: false, type: Number })
   async getBooksByCategoryId(
     @Param('id') id: number,
-    @Query('limit') limit: number = 6,
+    @Query('limit') limit: number = 8,
     @Query('page') page: number = 1,
   ): Promise<any> {
     try {

@@ -1,7 +1,8 @@
 import { ApiProperty } from '@nestjs/swagger'
-import { IsNotEmpty, Length, IsMobilePhone, IsEmail } from 'class-validator'
+import { IsEmail, IsEnum, IsMobilePhone, IsNotEmpty, Length } from 'class-validator'
+import { Role } from 'src/common'
 
-export class RegisterDto {
+export class CreateDto {
   @ApiProperty({ default: 'string@gmail.com' })
   @IsEmail()
   @IsNotEmpty()
@@ -27,4 +28,12 @@ export class RegisterDto {
   @IsNotEmpty()
   @Length(12, 100)
   address: string
+
+  @ApiProperty({ default: 'CUSTOMER' })
+  @IsEnum(Role)
+  role: Role
+
+  @ApiProperty()
+  @IsNotEmpty()
+  active: boolean
 }
