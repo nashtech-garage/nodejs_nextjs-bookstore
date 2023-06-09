@@ -1,9 +1,31 @@
 import { useRouter } from 'next/router'
 
 import styles from './index.module.scss'
+import { Badge, Dropdown, MenuProps } from 'antd'
+import Link from 'next/link'
 
-export default function Header() {
+type HeaderPros = {
+  email?: string
+  onLogout?: () => Promise<void>
+}
+
+export default function Header({ email, onLogout }: HeaderPros) {
   const router = useRouter()
+
+  const itemsDropdown: MenuProps['items'] = [
+    {
+      key: '1',
+      label: <Link href={'/dashboard'}>Cài đặt</Link>,
+    },
+    {
+      key: '2',
+      danger: true,
+      onClick: async () => {
+        onLogout && (await onLogout())
+      },
+      label: <span>Đăng xuất</span>,
+    },
+  ]
 
   return (
     <header className={styles.header}>
@@ -53,14 +75,24 @@ export default function Header() {
           </div>
         </div>
         <div className={`${styles.form_dang_nhap_gio_hang} ${styles.item_nav}`}>
+          {!email ? (
+            <div
+              className={styles.item_menu}
+              onClick={() =>
+                router.push('/login', undefined, { scroll: false })
+              }
+            >
+              Đăng Nhập
+            </div>
+          ) : (
+            <Dropdown menu={{ items: itemsDropdown }} placement='bottom' arrow>
+              <div className={styles.item_menu}>vtanh1905@gmail.com</div>
+            </Dropdown>
+          )}
           <div className={styles.gio_hang}>
-            <img src='/images/cart.png' />
-          </div>
-          <div
-            className={styles.item_menu}
-            onClick={() => router.push('/login', undefined, { scroll: false })}
-          >
-            Đăng Nhập
+            <Badge count={5}>
+              <img src='/images/cart.png' />
+            </Badge>
           </div>
         </div>
         <div style={{ clear: 'both' }} />

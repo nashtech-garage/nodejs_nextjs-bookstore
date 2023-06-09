@@ -1,6 +1,6 @@
 FROM node:18.12-alpine
 
-WORKDIR /nestjs-bookstore
+WORKDIR /nextjs-bookstore
 
 COPY . .
 
