@@ -1,22 +1,43 @@
-import { Button, Form, Input, Card } from 'antd'
+import { Button, Form, Input, Card, notification } from 'antd'
 import { useRouter } from 'next/router'
 
 import styles from './index.module.scss'
+
+import { useAuth } from '@/hooks'
 
 Login.title = 'Login'
 
 export default function Login() {
   const router = useRouter()
+  const { onLogin } = useAuth()
 
-  const onFinish = () => {}
+  const onFinish = async (values: any) => {
+    const { email, password } = values
+    try {
+      const response = await onLogin(email, password)
+      notification.success({
+        message: response.message,
+      })
+    } catch (error: any) {
+      notification.error({
+        message: error.message,
+      })
+    }
+  }
 
   return (
     <Card className={styles.login}>
       <Form name='basic' onFinish={onFinish} autoComplete='off'>
         <Form.Item
           label='Tài Khoản'
-          name='username'
-          rules={[{ required: true, message: 'Vui lòng nhập tài khoản!' }]}
+          name='email'
+          rules={[
+            { required: true, message: 'Vui lòng nhập tài khoản!' },
+            {
+              type: 'email',
+              message: 'Email không hợp lệ!',
+            },
+          ]}
         >
           <Input />
         </Form.Item>

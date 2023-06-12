@@ -9,12 +9,7 @@ export default function BookDetail() {
   return (
     <div className={styles.book_details}>
       <div className={styles.left_content}>
-        <Image
-          src='/images/sach/con_cho_nho_bia_thuong_bia_1.jpg'
-          width={400}
-          height={600}
-          alt=''
-        ></Image>
+        <img src='/images/sach/con_cho_nho_bia_thuong_bia_1.jpg' />
         <div>
           <div className={styles.sale_price}>15000 ₫</div>
           <div className={styles.price}>13000 ₫</div>
