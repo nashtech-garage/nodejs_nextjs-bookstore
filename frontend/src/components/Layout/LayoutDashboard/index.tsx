@@ -1,28 +1,32 @@
 import { Menu } from 'antd'
-import type { MenuProps  } from 'antd/es/menu'
+import type { MenuProps } from 'antd/es/menu'
 import { useRouter } from 'next/router'
+import { useEffect } from 'react'
 
 import styles from './index.module.scss'
+import { UserModel } from '@/models'
 
 type MenuItem = Required<MenuProps>['items'][number]
 
 export type LayoutDashboardProps = {
   children?: React.ReactNode
+  user: UserModel
 }
 
-export function LayoutDashboard({ children }: LayoutDashboardProps) {
+export function LayoutDashboard({ children, user }: LayoutDashboardProps) {
   const router = useRouter()
 
-  function getItem(label: React.ReactNode, key?: React.Key | null): MenuItem {
-    return {
-      key,
-      label,
-    } as MenuItem
-  }
+  // Authentication && Authorization
+  useEffect(() => {
+    if (!user || user.role !== 'CUSTOMER') {
+      router.push('/')
+    }
+  }, [user])
+  if (!user) return null
 
   const items: MenuItem[] = [
-    getItem('Tài Khoản', ''),
-    getItem('Quay lại', '/'),
+    { key: '', label: 'Tài Khoản' },
+    { key: '/', label: 'Quay lại' },
   ]
 
   const onClickItem = (info: any) => {

@@ -1,6 +1,6 @@
 import { LayoutDashboard } from '@/components'
 
-import styles from './index.module.scss';
+import styles from './index.module.scss'
 
 Dashboard.title = 'Dashboard'
 Dashboard.layout = LayoutDashboard
@@ -18,7 +18,8 @@ export default function Dashboard() {
         Số điện thoại: <b>0999999</b>
       </p>
       <p>
-        Địa chi: <b>999 Đường Hai Bà Chưng, Phường 13, Quận 1, Thành Phú Hồ Chí Minh</b>
+        Địa chi:{' '}
+        <b>999 Đường Hai Bà Chưng, Phường 13, Quận 1, Thành Phú Hồ Chí Minh</b>
       </p>
     </div>
   )

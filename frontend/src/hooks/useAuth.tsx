@@ -28,5 +28,22 @@ export const useAuth = () => {
     await mutate(null, { revalidate: false })
   }
 
-  return { user: data, isLoading, mutate, onLogin, onLogout }
+  const onRegister = async (
+    email: string,
+    password: string,
+    fullName: string,
+    phone: string,
+    address: string
+  ) => {
+    const response: AxiosResponse = await axios.post('/api/auth/register', {
+      email,
+      password,
+      fullName,
+      phone,
+      address,
+    })
+    return response
+  }
+
+  return { user: data, isLoading, mutate, onLogin, onLogout, onRegister }
 }

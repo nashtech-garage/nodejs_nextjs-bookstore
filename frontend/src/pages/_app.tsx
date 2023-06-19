@@ -1,26 +1,31 @@
 import '@/styles/global.scss'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
-import { NextComponentType, NextPageContext } from 'next/types'
 
-import { LayoutDefault } from '@/components'
-import { useAuth } from '@/hooks'
+import { useAuth, ComponentMetaData, useMetadata } from '@/hooks'
+import { Spin } from 'antd'
+import { LoadingOutlined } from '@ant-design/icons'
 
 type CustomAppProps = AppProps & {
-  Component: NextComponentType<NextPageContext, any, any> & {
-    title?: string
-    layout?: ({ children }: { children: React.ReactNode }) => JSX.Element
-  }
+  Component: ComponentMetaData
 }
 
 export default function MyApp({ Component, pageProps }: CustomAppProps) {
-  const { user, onLogout } = useAuth()
+  const { isLoading, user, onLogout } = useAuth()
+  const { title, Layout } = useMetadata(Component)
 
-  const title = Component.title
-    ? `Book Store | ${Component.title}`
-    : 'Book Store'
-
-  const Layout = Component.layout ? Component.layout : LayoutDefault
+  if (isLoading) {
+    return (
+      <>
+        <Head>
+          <title>{title}</title>
+        </Head>
+        <div className='container-loading'>
+          <Spin indicator={<LoadingOutlined />} />
+        </div>
+      </>
+    )
+  }
 
   return (
     <>

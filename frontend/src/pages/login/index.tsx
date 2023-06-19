@@ -1,15 +1,22 @@
 import { Button, Form, Input, Card, notification } from 'antd'
 import { useRouter } from 'next/router'
-
-import styles from './index.module.scss'
+import { useEffect } from 'react'
 
 import { useAuth } from '@/hooks'
+import styles from './index.module.scss'
 
 Login.title = 'Login'
 
 export default function Login() {
   const router = useRouter()
-  const { onLogin } = useAuth()
+  const { user, onLogin } = useAuth()
+
+  useEffect(() => {
+    if (user) {
+      router.push('/')
+    }
+  }, [user])
+  if (user) return null
 
   const onFinish = async (values: any) => {
     const { email, password } = values

@@ -4,4 +4,5 @@ export type UserModel = {
   phone: string
   address: string
   role: string
+  active: boolean
 }
