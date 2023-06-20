@@ -20,8 +20,17 @@ export class BooksService {
     return this.bookRepository.findOne({ where: { id } })
   }
 
-  save(name: string, image: string, author: string, description: string, categoryId: number, createdBy: string) {
-    return this.bookRepository.save({ name, image, author, description, categoryId, createdBy })
+  save(
+    name: string,
+    image: string,
+    author: string,
+    description: string,
+    price: number,
+    salePrice: number,
+    categoryId: number,
+    createdBy: string,
+  ) {
+    return this.bookRepository.save({ name, image, author, description, price, salePrice, categoryId, createdBy })
   }
 
   findByCategoryId(id: number, limit?: number, page?: number) {

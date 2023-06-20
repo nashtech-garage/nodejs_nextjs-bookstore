@@ -33,25 +33,13 @@ export class BooksController {
   @Post()
   async create(@Request() req, @Body() createBookDto: CreateBookDto): Promise<any> {
     try {
-      const { name, image, author, description, categoryId } = createBookDto
+      const { name, image, author, description, price, salePrice, categoryId } = createBookDto
       const { email } = req.user
 
-      await this.booksService.save(name, image, author, description, categoryId, email)
+      await this.booksService.save(name, image, author, description, price, salePrice, categoryId, email)
 
       return {
         message: 'Create Book Successfully',
-      }
-    } catch (error) {
-      throw new BadRequestException(error.message)
-    }
-  }
-
-  @Get('/:id')
-  async getDetail(@Param('id') id: number): Promise<any> {
-    try {
-      return {
-        message: 'Get Book Detail Successfully',
-        data: await this.booksService.findOne(id),
       }
     } catch (error) {
       throw new BadRequestException(error.message)
@@ -66,6 +54,18 @@ export class BooksController {
       return {
         message: 'Get New Books Successfully',
         data: await this.booksService.findNewBooks(limit, page),
+      }
+    } catch (error) {
+      throw new BadRequestException(error.message)
+    }
+  }
+
+  @Get('/:id')
+  async getDetail(@Param('id') id: number): Promise<any> {
+    try {
+      return {
+        message: 'Get Book Detail Successfully',
+        data: await this.booksService.findOne(id),
       }
     } catch (error) {
       throw new BadRequestException(error.message)

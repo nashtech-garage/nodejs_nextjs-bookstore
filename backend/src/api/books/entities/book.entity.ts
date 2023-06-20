@@ -5,14 +5,15 @@ import {
   BaseEntity,
   ManyToOne,
   JoinColumn,
-  RelationId,
   CreateDateColumn,
+  Check,
 } from 'typeorm'
 
 import { Category } from 'src/api/categories/entities/category.entity'
 import { Account } from 'src/api/accounts/entities/account.entity'
 
 @Entity({ name: 'books' })
+@Check('"price" >= "salePrice"')
 export class Book extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number
@@ -28,6 +29,12 @@ export class Book extends BaseEntity {
 
   @Column()
   description: string
+
+  @Column()
+  price: number
+
+  @Column()
+  salePrice: number
 
   @Column()
   categoryId: number

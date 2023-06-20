@@ -5,7 +5,7 @@ export interface AxiosResponse<T = unknown> {
   data?: T
 }
 
-export const axios = AxiosStatic.create({})
+export const axios = AxiosStatic.create({ baseURL: 'http://localhost:3000' })
 
 axios.interceptors.request.use(
   function (config) {

@@ -1,43 +1,24 @@
-import { useEffect, useState } from 'react'
-import { Module, Book } from '../components'
+import { GetStaticProps } from 'next'
 
-import { mockHotBooksData, mockFeatureBooksData } from '../mocks'
+import { Module, Book } from '@/components'
+import { BookModel } from '@/models'
+import { axios, AxiosResponse } from '@/utils'
 
 Home.title = 'Home'
 
-export default function Home() {
-  const [hotBooks, setHotBooks] = useState<any[]>([])
-  const [featureBooks, setFeatureBooks] = useState<any[]>([])
+type HomeProps = {
+  books: BookModel[]
+}
 
-  useEffect(() => {
-    setHotBooks(mockHotBooksData)
-  }, [])
-
-  useEffect(() => {
-    setFeatureBooks(mockFeatureBooksData)
-  }, [])
-
+export default function Home({ books }: HomeProps) {
   return (
     <>
-      <Module title='Sách bán chạy'>
-        {hotBooks.length !== 0 &&
-          hotBooks.map((book: any, index) => (
+      <Module title='Sách Mới'>
+        {books &&
+          books.map((book: BookModel) => (
             <Book
-              key={index}
-              imageURL={book.imageURL}
-              name={book.name}
-              author={book.author}
-              price={book.price}
-              salePrice={book.salePrice}
-            />
-          ))}
-      </Module>
-      <Module title='Sách nổi bật'>
-        {featureBooks.length !== 0 &&
-          featureBooks.map((book: any, index) => (
-            <Book
-              key={index}
-              imageURL={book.imageURL}
+              key={book.id}
+              imageURL='/images/sach/11_6_2.jpg'
               name={book.name}
               author={book.author}
               price={book.price}
@@ -47,4 +28,20 @@ export default function Home() {
       </Module>
     </>
   )
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+  try {
+    const response: AxiosResponse = await axios('/api/books/new')
+    return {
+      props: {
+        books: response.data,
+      },
+    }
+  } catch (error) {
+    return {
+      notFound: true,
+      revalidate: 10,
+    }
+  }
 }

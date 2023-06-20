@@ -1,5 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger'
-import { IsNotEmpty, Length } from 'class-validator'
+import { IsNotEmpty, IsNumber, Min } from 'class-validator'
+
+import { IsLessThan } from 'src/common'
 
 export class CreateBookDto {
   @ApiProperty()
@@ -17,6 +19,17 @@ export class CreateBookDto {
   @ApiProperty()
   @IsNotEmpty()
   description: string
+
+  @ApiProperty()
+  @IsNumber()
+  @Min(0)
+  price: number
+
+  @ApiProperty()
+  @IsNumber()
+  @Min(0)
+  @IsLessThan('price')
+  salePrice: number
 
   @ApiProperty()
   @IsNotEmpty()

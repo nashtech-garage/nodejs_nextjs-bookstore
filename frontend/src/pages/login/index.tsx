@@ -34,16 +34,17 @@ export default function Login() {
 
   return (
     <Card className={styles.login}>
-      <Form name='basic' onFinish={onFinish} autoComplete='off'>
+      <Form
+        name='basic'
+        onFinish={onFinish}
+        autoComplete='off'
+        labelCol={{ flex: '85px' }}
+      >
         <Form.Item
-          label='Tài Khoản'
+          label='Email'
           name='email'
           rules={[
-            { required: true, message: 'Vui lòng nhập tài khoản!' },
-            {
-              type: 'email',
-              message: 'Email không hợp lệ!',
-            },
+            { required: true, type: 'email', message: 'Vui lòng nhập Email!' },
           ]}
         >
           <Input />
