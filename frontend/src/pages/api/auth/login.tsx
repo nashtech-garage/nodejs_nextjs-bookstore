@@ -37,7 +37,7 @@ const handleProxyInit = (proxy: httpProxy) => {
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   await httpProxyMiddleware(req, res, {
-    target: 'http://localhost:4000',
+    target: process.env.NEXT_PUBLIC_SERVER,
     onProxyInit: handleProxyInit,
     selfHandleResponse: true,
   })

@@ -1,11 +1,11 @@
 import useSWR, { SWRConfiguration } from 'swr'
-import { axios, AxiosResponse } from '@/utils'
+import { axiosClient, AxiosResponse } from '@/utils'
 import { UserModel } from '@/models'
 
 export const useAuth = (options?: SWRConfiguration) => {
   const { data, isLoading, mutate } = useSWR<UserModel>(
     '/api/auth/profile',
-    (url) => axios.post(url).then((res) => res.data),
+    (url: string) => axiosClient.post(url).then((res) => res.data),
     {
       ...options,
       errorRetryCount: 0,
@@ -17,7 +17,7 @@ export const useAuth = (options?: SWRConfiguration) => {
     email: string,
     password: string
   ): Promise<AxiosResponse> => {
-    const response: AxiosResponse = await axios.post('/api/auth/login', {
+    const response: AxiosResponse = await axiosClient.post('/api/auth/login', {
       email,
       password,
     })
@@ -26,7 +26,7 @@ export const useAuth = (options?: SWRConfiguration) => {
   }
 
   const onLogout = async () => {
-    await axios.post('/api/auth/logout')
+    await axiosClient.post('/api/auth/logout')
     await mutate(undefined, { revalidate: false })
   }
 
@@ -37,13 +37,16 @@ export const useAuth = (options?: SWRConfiguration) => {
     phone: string,
     address: string
   ) => {
-    const response: AxiosResponse = await axios.post('/api/auth/register', {
-      email,
-      password,
-      fullName,
-      phone,
-      address,
-    })
+    const response: AxiosResponse = await axiosClient.post(
+      '/api/auth/register',
+      {
+        email,
+        password,
+        fullName,
+        phone,
+        address,
+      }
+    )
     return response
   }
 

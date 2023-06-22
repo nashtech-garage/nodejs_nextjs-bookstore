@@ -2,7 +2,7 @@ import { GetStaticProps } from 'next'
 
 import { Module, Book } from '@/components'
 import { BookModel } from '@/models'
-import { axios, AxiosResponse } from '@/utils'
+import { AxiosResponse, axiosServer } from '@/utils'
 
 Home.title = 'Home'
 
@@ -32,7 +32,7 @@ export default function Home({ books }: HomeProps) {
 
 export const getStaticProps: GetStaticProps = async () => {
   try {
-    const response: AxiosResponse = await axios('/api/books/new')
+    const response: AxiosResponse = await axiosServer.get('/api/books/new')
     return {
       props: {
         books: response.data,
