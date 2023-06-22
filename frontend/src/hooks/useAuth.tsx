@@ -1,11 +1,13 @@
-import useSWR from 'swr'
+import useSWR, { SWRConfiguration } from 'swr'
 import { axios, AxiosResponse } from '@/utils'
+import { UserModel } from '@/models'
 
-export const useAuth = () => {
-  const { data, isLoading, mutate } = useSWR(
+export const useAuth = (options?: SWRConfiguration) => {
+  const { data, isLoading, mutate } = useSWR<UserModel>(
     '/api/auth/profile',
     (url) => axios.post(url).then((res) => res.data),
     {
+      ...options,
       errorRetryCount: 0,
       revalidateOnFocus: false,
     }

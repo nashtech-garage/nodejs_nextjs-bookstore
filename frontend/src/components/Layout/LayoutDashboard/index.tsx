@@ -18,7 +18,7 @@ export function LayoutDashboard({ children, user }: LayoutDashboardProps) {
 
   // Authentication && Authorization
   useEffect(() => {
-    if (!user || user.role !== 'CUSTOMER') {
+    if (!user || !['CUSTOMER', 'EMPLOYER', 'ADMIN'].includes(user.role)) {
       router.push('/')
     }
   }, [user])

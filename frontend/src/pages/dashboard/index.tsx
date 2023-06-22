@@ -1,25 +1,27 @@
 import { LayoutDashboard } from '@/components'
 
 import styles from './index.module.scss'
+import { useAuth } from '@/hooks'
 
 Dashboard.title = 'Dashboard'
 Dashboard.layout = LayoutDashboard
 
 export default function Dashboard() {
+  const { user } = useAuth({ revalidateOnMount: false })
+
   return (
     <div className={styles.dashboard}>
       <p>
-        Tài khoản: <b>admin</b>
+        Email: <b>{user?.email}</b>
       </p>
       <p>
-        Họ Tên: <b>Nguyễn Văn Admin</b>
+        Họ Tên: <b>{user?.fullName}</b>
       </p>
       <p>
-        Số điện thoại: <b>0999999</b>
+        Số điện thoại: <b>{user?.phone}</b>
       </p>
       <p>
-        Địa chi:{' '}
-        <b>999 Đường Hai Bà Chưng, Phường 13, Quận 1, Thành Phú Hồ Chí Minh</b>
+        Địa chi: <b>{user?.address}</b>
       </p>
     </div>
   )
