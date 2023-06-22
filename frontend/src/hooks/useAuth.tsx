@@ -27,7 +27,7 @@ export const useAuth = (options?: SWRConfiguration) => {
 
   const onLogout = async () => {
     await axios.post('/api/auth/logout')
-    await mutate(null, { revalidate: false })
+    await mutate(undefined, { revalidate: false })
   }
 
   const onRegister = async (
