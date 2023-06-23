@@ -22,7 +22,7 @@ const handleProxyInit = (proxy: httpProxy) => {
         cookies.set('access-token', accessToken, {
           expires: new Date(expireAt),
           httpOnly: true,
-          secure: process.env.NODE_ENV === 'production',
+          secure: false,
         })
 
         res.end(JSON.stringify({ message: 'Login Successfully' }))

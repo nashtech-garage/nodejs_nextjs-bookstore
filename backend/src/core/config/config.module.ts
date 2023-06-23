@@ -8,7 +8,7 @@ import { join } from 'path'
 @Module({
   imports: [
     NestConfigModule.forRoot({
-      load: [() => yaml.load(readFileSync(join(__dirname, '../../config.yaml'), 'utf8'))],
+      load: [() => yaml.load(readFileSync(join(__dirname, '../../../config.yaml'), 'utf8'))],
     }),
   ],
   providers: [ConfigService],
