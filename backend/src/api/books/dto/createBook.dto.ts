@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger'
+import { Type } from 'class-transformer'
 import { IsNotEmpty, IsNumber, Min } from 'class-validator'
 
 import { IsLessThan } from 'src/common'
@@ -8,8 +9,7 @@ export class CreateBookDto {
   @IsNotEmpty()
   name: string
 
-  @ApiProperty()
-  @IsNotEmpty()
+  @ApiProperty({ type: 'string', format: 'binary', required: true })
   image: string
 
   @ApiProperty()
@@ -21,11 +21,13 @@ export class CreateBookDto {
   description: string
 
   @ApiProperty()
+  @Type(() => Number)
   @IsNumber()
   @Min(0)
   price: number
 
   @ApiProperty()
+  @Type(() => Number)
   @IsNumber()
   @Min(0)
   @IsLessThan('price')

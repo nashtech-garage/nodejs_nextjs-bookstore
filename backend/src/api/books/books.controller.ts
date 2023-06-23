@@ -1,5 +1,17 @@
-import { BadRequestException, Body, Controller, Get, Param, Post, Query, Request } from '@nestjs/common'
-import { ApiTags, ApiQuery } from '@nestjs/swagger'
+import {
+  BadRequestException,
+  Body,
+  Controller,
+  Get,
+  Param,
+  Post,
+  Query,
+  Request,
+  UploadedFile,
+  UseInterceptors,
+} from '@nestjs/common'
+import { ApiTags, ApiQuery, ApiConsumes } from '@nestjs/swagger'
+import { FileInterceptor } from '@nestjs/platform-express'
 
 import { CreateBookDto } from './dto/createBook.dto'
 import { BooksService } from './books.service'
@@ -31,9 +43,15 @@ export class BooksController {
 
   @Auth([Role.Admin, Role.Employer])
   @Post()
-  async create(@Request() req, @Body() createBookDto: CreateBookDto): Promise<any> {
+  @ApiConsumes('multipart/form-data')
+  @UseInterceptors(FileInterceptor('image'))
+  async create(
+    @Request() req,
+    @Body() createBookDto: CreateBookDto,
+    @UploadedFile() image: Express.Multer.File,
+  ): Promise<any> {
     try {
-      const { name, image, author, description, price, salePrice, categoryId } = createBookDto
+      const { name, author, description, price, salePrice, categoryId } = createBookDto
       const { email } = req.user
 
       await this.booksService.save(name, image, author, description, price, salePrice, categoryId, email)

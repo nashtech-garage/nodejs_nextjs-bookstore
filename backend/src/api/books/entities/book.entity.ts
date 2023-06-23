@@ -22,7 +22,7 @@ export class Book extends BaseEntity {
   name: string
 
   @Column()
-  image: string
+  imageName: string
 
   @Column()
   author: string

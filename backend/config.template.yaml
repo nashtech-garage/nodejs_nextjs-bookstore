@@ -18,5 +18,9 @@ DATABASE:
     SYNCHRONIZE: true
 
 AWS:
+  REGION: 'us-east-1'
   ACCESS_KEY_ID:
   SECRET_ACCESS_KEY:
+  SERVICES:
+    S3:
+      BUCKET_NAME:
