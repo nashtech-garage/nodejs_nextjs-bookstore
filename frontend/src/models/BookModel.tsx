@@ -2,7 +2,7 @@ export type BookModel = {
   id: number
   name: string
   author: string
-  image: string
+  imagePath: string
   description: string
   price: number
   salePrice: number

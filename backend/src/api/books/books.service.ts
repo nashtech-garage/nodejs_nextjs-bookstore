@@ -56,7 +56,7 @@ export class BooksService {
 
     return this.bookRepository.save({
       name,
-      imageName: imageUploaded.Key,
+      imagePath: imageUploaded.Key,
       author,
       description,
       price,
