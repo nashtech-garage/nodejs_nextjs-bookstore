@@ -5,6 +5,7 @@ import { Like, Repository } from 'typeorm'
 import { InjectAwsService } from 'nest-aws-sdk'
 import { S3 } from 'aws-sdk'
 import { ManagedUpload } from 'aws-sdk/clients/s3'
+import { v4 as uuidv4 } from 'uuid'
 
 import { Book } from './entities/book.entity'
 
@@ -41,7 +42,7 @@ export class BooksService {
         {
           Bucket: this.configService.get('AWS.SERVICES.S3.BUCKET_NAME'),
           Body: image.buffer,
-          Key: `images/${name}-${Date.now()}`,
+          Key: `images/${uuidv4()}`,
         },
         (error: Error, data: ManagedUpload.SendData) => {
           if (error) {
