@@ -49,10 +49,10 @@ export default function Header({ email, onLogout }: HeaderPros) {
 
           <div
             className={`${styles.item_menu} ${
-              router.pathname === '/categories/[id]' ? `${styles.active}` : ''
+              router.pathname === '/categories/[id]/[page]' ? `${styles.active}` : ''
             }`}
             onClick={() =>
-              router.push('/categories/1', undefined, { scroll: false })
+              router.push('/categories/1/1', undefined, { scroll: false })
             }
           >
             Danh mục sách

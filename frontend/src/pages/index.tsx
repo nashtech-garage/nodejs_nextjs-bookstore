@@ -18,7 +18,7 @@ export default function Home({ books }: HomeProps) {
           books.map((book: BookModel) => (
             <Book
               key={book.id}
-              imageURL={`${process.env.NEXT_PUBLIC_AWS_S3_URL}/${book.imagePath}` }
+              imageURL={`${process.env.NEXT_PUBLIC_AWS_S3_URL}/${book.imagePath}`}
               name={book.name}
               author={book.author}
               price={book.price}

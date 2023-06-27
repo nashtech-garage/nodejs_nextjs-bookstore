@@ -5,6 +5,11 @@ export interface AxiosResponse<T = unknown> {
   data?: T
 }
 
+export type PaginationData<T> = {
+  items: T[]
+  total: number
+}
+
 // Axios for Client Side
 export const axiosClient = axios.create({
   baseURL: process.env.NEXT_PUBLIC_SITE,
@@ -29,7 +34,7 @@ axiosClient.interceptors.response.use(
 )
 
 // Axios for Server Side
-// We must replace localhost to 127.0.0.1 
+// We must replace localhost to 127.0.0.1
 // https://stackoverflow.com/questions/75841179/nextjs-api-axios-nextauth-issue-axioserror-connect-econnrefused-13000
 export const axiosServer = axios.create({
   baseURL: process.env.NEXT_PUBLIC_SITE?.replace('localhost', '127.0.0.1'),

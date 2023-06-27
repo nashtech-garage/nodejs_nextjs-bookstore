@@ -67,9 +67,17 @@ export class BooksService {
     })
   }
 
-  findByCategoryId(id: number, limit?: number, page?: number) {
+  async findByCategoryId(id: number, limit?: number, page?: number) {
     const offset = limit * page - limit || 0
-    return this.bookRepository.find({ where: { categoryId: id }, take: limit, skip: offset })
+    const [items, total] = await this.bookRepository.findAndCount({
+      where: { categoryId: id },
+      take: limit,
+      skip: offset,
+    })
+    return {
+      items,
+      total,
+    }
   }
 
   findNewBooks(limit?: number, page?: number) {
