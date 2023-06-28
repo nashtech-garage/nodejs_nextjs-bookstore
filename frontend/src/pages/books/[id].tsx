@@ -1,18 +1,36 @@
-import { Button } from 'antd'
-import Image from 'next/image'
-
+import { Button, Spin } from 'antd'
 import styles from './[id].module.scss'
+import { GetStaticPaths, GetStaticProps } from 'next'
+import { LoadingOutlined } from '@ant-design/icons'
+
+import { AxiosResponse, axiosServer } from '@/utils'
+import { BookModel } from '@/models'
+import { useRouter } from 'next/router'
 
 BookDetail.title = 'Book Detail'
 
-export default function BookDetail() {
+export type BookDetailProps = {
+  book: BookModel
+}
+
+export default function BookDetail({ book }: BookDetailProps) {
+  const router = useRouter()
+
+  if (router.isFallback) {
+    return (
+      <div className='container-loading'>
+        <Spin indicator={<LoadingOutlined />} />
+      </div>
+    )
+  }
+
   return (
     <div className={styles.book_details}>
       <div className={styles.left_content}>
-        <img src='/images/sach/con_cho_nho_bia_thuong_bia_1.jpg' />
+        <img src={`${process.env.NEXT_PUBLIC_AWS_S3_URL}/${book.imagePath}`} />
         <div>
-          <div className={styles.sale_price}>15000 ₫</div>
-          <div className={styles.price}>13000 ₫</div>
+          <div className={styles.sale_price}>{book.salePrice} ₫</div>
+          <div className={styles.price}>{book.price} ₫</div>
           <Button className={styles.button} block>
             Mua ngay
           </Button>
@@ -20,24 +38,44 @@ export default function BookDetail() {
       </div>
 
       <section className={styles.right_content}>
-        <h1>Con Chó Nhỏ Mang Giỏ Hoa Hồng (Phiên Bản Đặc Biệt - Bìa Cứng)</h1>
+        <h1>{book.name}</h1>
         <p>
-          Tác giả : <b>Nguyễn Nhật Ánh</b>
+          Tác giả : <b>{book.author}</b>
         </p>
-        <p>
-          There are many variations of passages of Lorem Ipsum available, but
-          the majority have suffered alteration in some form, by injected
-          humour, or randomised words which dont look even slightly believable.
-          If you are going to use a passage of Lorem Ipsum, you need to be sure
-          there isnt anything embarrassing hidden in the middle of text. All the
-          Lorem Ipsum generators on the Internet tend to repeat predefined
-          chunks as necessary, making this the first true generator on the
-          Internet. It uses a dictionary of over 200 Latin words, combined with
-          a handful of model sentence structures, to generate Lorem Ipsum which
-          looks reasonable. The generated Lorem Ipsum is therefore always free
-          from repetition, injected humour, or non-characteristic words etc.
-        </p>
+        <p>{book.description}</p>
       </section>
     </div>
   )
+}
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  try {
+    const response: AxiosResponse<BookModel[]> = await axiosServer('/api/books')
+
+    if (!response.data) {
+      return { paths: [], fallback: true }
+    }
+
+    const paths = response.data.map((value) => ({
+      params: { id: `${value.id}` },
+    }))
+    return { paths, fallback: true }
+  } catch (error) {
+    return {
+      paths: [],
+      fallback: true,
+    }
+  }
+}
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const response: AxiosResponse = await axiosServer.get(
+    `/api/books/${params?.id}`
+  )
+  return {
+    props: {
+      book: response.data,
+    },
+    revalidate: 10,
+  }
 }

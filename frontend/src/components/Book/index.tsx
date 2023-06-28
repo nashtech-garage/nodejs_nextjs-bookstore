@@ -2,6 +2,7 @@ import { useRouter } from 'next/router'
 import styles from './index.module.scss'
 
 export type BookProps = {
+  id: number
   imageURL: string
   name: string
   author: string
@@ -9,13 +10,19 @@ export type BookProps = {
   price: number
 }
 
-export function Book({ imageURL, name, author, salePrice, price }: BookProps) {
+export function Book({
+  id,
+  imageURL,
+  name,
+  author,
+  salePrice,
+  price,
+}: BookProps) {
   const router = useRouter()
-
   return (
     <div
       className={styles.item_thong_tin_sach}
-      onClick={() => router.push('/books/1', undefined, { scroll: false })}
+      onClick={() => router.push(`/books/${id}`, undefined, { scroll: false })}
     >
       <div className={styles.hinh_sach}>
         <img src={imageURL} />
