@@ -8,14 +8,12 @@
   }
 
   .footer_right {
+    position: relative;
     float: right;
   }
 
   .img_chung_nhan {
     height: 60px;
-
-    img {
-      height: 100%;
-    }
+    width: 200px;
   }
 }

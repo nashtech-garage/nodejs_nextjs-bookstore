@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router'
+import Image from 'next/image'
 
 import styles from './index.module.scss'
 import { Badge, Dropdown, MenuProps } from 'antd'
@@ -30,11 +31,13 @@ export default function Header({ email, onLogout }: HeaderPros) {
   return (
     <header className={styles.header}>
       <div className={styles.slider}>
-        <img src='/images/slide_banner/slide_1.jpg' />
+        <Image src='/images/slide_banner/slide_1.jpg' alt='' fill />
       </div>
       <nav className={styles.navigation}>
         <div className={`${styles.logo} ${styles.item_nav}`}>
-          <img src='/images/logo.png' />
+          <div className={styles.image}>
+            <Image src='/images/logo.png' alt='' fill />
+          </div>
           <h3 className={styles.slogan}>Bookstore</h3>
         </div>
         <div className={`${styles.menu} ${styles.item_nav}`}>
@@ -49,7 +52,9 @@ export default function Header({ email, onLogout }: HeaderPros) {
 
           <div
             className={`${styles.item_menu} ${
-              router.pathname === '/categories/[id]/[page]' ? `${styles.active}` : ''
+              router.pathname === '/categories/[id]/[page]'
+                ? `${styles.active}`
+                : ''
             }`}
             onClick={() =>
               router.push('/categories/1/1', undefined, { scroll: false })
@@ -90,8 +95,8 @@ export default function Header({ email, onLogout }: HeaderPros) {
             </Dropdown>
           )}
           <div className={styles.gio_hang}>
-            <Badge count={5}>
-              <img src='/images/cart.png' />
+            <Badge count={5} className={styles.image}>
+              <Image src='/images/cart.png' alt='' fill />
             </Badge>
           </div>
         </div>

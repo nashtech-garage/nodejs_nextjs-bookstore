@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import styles from './index.module.scss'
 
 export type NewProps = {
@@ -10,7 +11,7 @@ export function New({ imageURL, title, description }: NewProps) {
   return (
     <div className={styles.tin_tuc_item}>
       <div className={styles.class_hinh_tin_tuc}>
-        <img src={imageURL} alt='' />
+        <Image src={imageURL} alt='' fill />
       </div>
       <div className={styles.thong_tin_tin_tuc}>
         <div className={styles.title_tin_tuc}>

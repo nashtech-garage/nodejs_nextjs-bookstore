@@ -5,6 +5,12 @@
   .left_content {
     text-align: center;
 
+    .image {
+      position: relative;
+      width: 40vw;
+      height: 60vh;
+    }
+
     .sale_price {
       font-size: 2em;
       font-weight: bold;

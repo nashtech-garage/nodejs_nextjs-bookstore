@@ -2,7 +2,6 @@
 
 .item_thong_tin_sach {
   width: 22%;
-  position: relative;
   float: left;
   margin: 1.5%;
   cursor: pointer;
@@ -16,12 +15,9 @@
   }
 
   .hinh_sach {
-    height: 250px;
+    height: 30vh;
+    position: relative;
     overflow: hidden;
-
-    img {
-      height: 100%;
-    }
   }
 
   .ten_sach {

@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import styles from './index.module.scss'
 
 export default function Footer() {
@@ -10,7 +11,7 @@ export default function Footer() {
       </div>
       <div className={styles.footer_right}>
         <div className={styles.img_chung_nhan}>
-          <img src='/images/seal-ecommerce.png' alt='' />
+          <Image src='/images/seal-ecommerce.png' alt='' fill />
         </div>
       </div>
     </footer>

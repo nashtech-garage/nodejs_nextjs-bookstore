@@ -2,6 +2,7 @@ import { Button, Spin } from 'antd'
 import styles from './[id].module.scss'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { LoadingOutlined } from '@ant-design/icons'
+import Image from 'next/image'
 
 import { AxiosResponse, axiosServer } from '@/utils'
 import { BookModel } from '@/models'
@@ -27,7 +28,13 @@ export default function BookDetail({ book }: BookDetailProps) {
   return (
     <div className={styles.book_details}>
       <div className={styles.left_content}>
-        <img src={`${process.env.NEXT_PUBLIC_AWS_S3_URL}/${book.imagePath}`} />
+        <div className={styles.image}>
+          <Image
+            src={`${process.env.NEXT_PUBLIC_AWS_S3_URL}/${book.imagePath}`}
+            alt=''
+            fill
+          />
+        </div>
         <div>
           <div className={styles.sale_price}>{book.salePrice} ₫</div>
           <div className={styles.price}>{book.price} ₫</div>
