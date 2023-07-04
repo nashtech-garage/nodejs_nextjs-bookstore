@@ -1,5 +1,8 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
-import { Pagination, Spin } from 'antd'
+import { Pagination } from 'antd'
+import { useRouter } from 'next/router'
+import useSWR from 'swr'
+import Head from 'next/head'
 
 import { Book, Menu, Module } from '@/components'
 import {
@@ -9,14 +12,10 @@ import {
   axiosClient,
 } from '@/utils'
 import { BookModel, CategoryModel } from '@/models'
-import { useRouter } from 'next/router'
-import useSWR from 'swr'
 
 export type CategoryProps = {
   books: PaginationData<BookModel>
 }
-
-Category.title = 'Category'
 
 export default function Category({ books }: CategoryProps) {
   const router = useRouter()
@@ -32,6 +31,13 @@ export default function Category({ books }: CategoryProps) {
 
   return (
     <>
+      <Head>
+        <title>Book Store | Category</title>
+        <meta
+          name='description'
+          content='Explore our diverse collection of books at our category page. Discover a wide range of genres, including fiction, non-fiction, romance, mystery, science fiction, and more. Browse through curated lists, bestsellers, and new releases. Find your next captivating read and immerse yourself in the world of literature at our bookstore ecommerce platform.'
+        />
+      </Head>
       <Menu items={menuItems ?? []}>
         <Module>
           {books.items.map((book: BookModel) => (

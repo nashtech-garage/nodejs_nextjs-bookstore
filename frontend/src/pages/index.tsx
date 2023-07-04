@@ -1,10 +1,9 @@
 import { GetStaticProps } from 'next'
+import Head from 'next/head'
 
 import { Module, Book } from '@/components'
 import { BookModel } from '@/models'
 import { AxiosResponse, axiosServer } from '@/utils'
-
-Home.title = 'Home'
 
 type HomeProps = {
   books: BookModel[]
@@ -13,6 +12,13 @@ type HomeProps = {
 export default function Home({ books }: HomeProps) {
   return (
     <>
+      <Head>
+        <title>Book Store | Home</title>
+        <meta
+          name='description'
+          content='Discover a vast selection of books at our online bookstore. Shop for fiction, non-fiction, bestsellers, and more. Enjoy convenient browsing, secure transactions, and fast delivery.'
+        />
+      </Head>
       <Module title='Sách Mới'>
         {books &&
           books.map((book: BookModel) => (
