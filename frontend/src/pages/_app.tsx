@@ -1,5 +1,6 @@
 import '@/styles/global.scss'
 import { AppProps } from 'next/app'
+import Head from 'next/head'
 
 import { useAuth } from '@/hooks'
 import { Spin } from 'antd'
@@ -18,15 +19,26 @@ export default function MyApp({ Component, pageProps }: CustomAppProps) {
 
   if (isLoading) {
     return (
-      <div className='container-loading'>
-        <Spin indicator={<LoadingOutlined />} />
-      </div>
+      <>
+        <Head>
+          <title>Book Store</title>
+        </Head>
+        <div className='container-loading'>
+          <Spin indicator={<LoadingOutlined />} />
+        </div>
+      </>
     )
   }
 
   return (
-    <Layout user={user} onLogout={onLogout}>
-      <Component {...pageProps} />
-    </Layout>
+    <>
+      <Head>
+        <link rel='icon' href='/favicon.ico' />
+        <meta name='viewport' content='initial-scale=1.0, width=device-width' />
+      </Head>
+      <Layout user={user} onLogout={onLogout}>
+        <Component {...pageProps} />
+      </Layout>
+    </>
   )
 }

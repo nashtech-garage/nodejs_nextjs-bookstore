@@ -5,6 +5,8 @@
   float: left;
   margin: 1.5%;
   cursor: pointer;
+  position: relative;
+  height: 45vh;
 
   &:hover {
     box-shadow: 5px 5px 10px $box-shadow-color;
